@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGitHubClient">
         <activity
-            android:name=".ui.screens.MainActivity"
+            android:name=".ui.screens.users.UsersActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
