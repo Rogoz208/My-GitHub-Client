@@ -55,8 +55,8 @@ class UsersActivity : AppCompatActivity(R.layout.activity_users) {
 
         adapter.setOnItemClickListener(onItemClickListener)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = adapter
+        binding.usersRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.usersRecyclerView.adapter = adapter
     }
 
     private fun initViewModel(){
