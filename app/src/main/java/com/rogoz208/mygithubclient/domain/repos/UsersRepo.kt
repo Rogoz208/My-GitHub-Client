@@ -4,11 +4,11 @@ import com.rogoz208.mygithubclient.domain.entities.UserEntity
 
 interface UsersRepo {
 
-    val users: List<UserEntity>
+    fun getUsers(callback: (List<UserEntity>) -> Unit)
 
-    fun createUser(user: UserEntity): String
+    fun createUser(user: UserEntity)
 
-    fun deleteUser(uId: String): Boolean
+    fun deleteUser(uId: String)
 
-    fun updateUser(uId: String, user: UserEntity): Boolean
+    fun updateUser(uId: String, user: UserEntity, position: Int)
 }

@@ -4,11 +4,11 @@ import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 
 interface RepositoriesRepo {
 
-    val repositories: List<RepositoryEntity>
+    fun getRepositories(callback: (List<RepositoryEntity>) -> Unit)
 
-    fun createUser(repository: RepositoryEntity): String
+    fun createRepository(repository: RepositoryEntity)
 
-    fun deleteUser(uId: String): Boolean
+    fun deleteRepository(uId: String)
 
-    fun updateUser(uId: String, repository: RepositoryEntity): Boolean
+    fun updateRepository(uId: String, repository: RepositoryEntity, position: Int)
 }
