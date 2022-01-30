@@ -8,7 +8,7 @@ import com.rogoz208.mygithubclient.R
 import com.rogoz208.mygithubclient.databinding.UserCardViewHolderBinding
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 
-class UserViewHolder(parent: ViewGroup, private val clickListener: OnItemClickListener) :
+class UserViewHolder(parent: ViewGroup, private val clickListener: OnUserClickListener) :
     RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.user_card_view_holder, parent, false)
     ) {

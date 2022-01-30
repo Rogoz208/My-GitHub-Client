@@ -36,7 +36,7 @@ class MockUsersRepo : UsersRepo {
 
     private fun fillRepoByTestValues() {
         for (i in 1..10) {
-            createUser(UserEntity("", "User-$i", ""))
+            createUser(UserEntity("", "User-$i", "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"))
         }
     }
 }

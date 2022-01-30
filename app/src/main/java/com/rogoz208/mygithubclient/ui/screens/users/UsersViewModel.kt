@@ -13,6 +13,7 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
     }
 
     override val usersListLiveData: LiveData<List<UserEntity>> = MutableLiveData()
+    override val openRepositoriesScreenLiveData: LiveData<UserEntity> = MutableLiveData()
 
 
     override fun getData() {
@@ -22,6 +23,6 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
     }
 
     override fun onUserClick(userEntity: UserEntity) {
-        TODO("Not yet implemented")
+        openRepositoriesScreenLiveData.mutable().postValue(userEntity)
     }
 }

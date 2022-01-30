@@ -7,6 +7,7 @@ interface UsersContract {
 
     interface ViewModel{
         val usersListLiveData: LiveData<List<UserEntity>>
+        val openRepositoriesScreenLiveData: LiveData<UserEntity>
 
         fun getData()
         fun onUserClick(userEntity: UserEntity)
