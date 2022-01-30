@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.mygithubclient.R
-import com.rogoz208.mygithubclient.databinding.RepositoryCardViewHolderBinding
+import com.rogoz208.mygithubclient.databinding.ViewHolderRepositoryCardBinding
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 
 class RepositoryViewHolder(
@@ -14,9 +14,9 @@ class RepositoryViewHolder(
 ) :
     RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.repository_card_view_holder, parent, false)
+            .inflate(R.layout.view_holder_repository_card, parent, false)
     ) {
-    private val binding by viewBinding(RepositoryCardViewHolderBinding::bind)
+    private val binding by viewBinding(ViewHolderRepositoryCardBinding::bind)
 
     fun bind(repository: RepositoryEntity) {
         binding.repositoryNameTextView.text = repository.repositoryName
