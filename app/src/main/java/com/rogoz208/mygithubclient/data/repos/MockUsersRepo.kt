@@ -5,6 +5,8 @@ import com.rogoz208.mygithubclient.domain.repos.UsersRepo
 import java.util.*
 import kotlin.collections.ArrayList
 
+private const val RANDOM_USER_PICTURE_URL = "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+
 class MockUsersRepo : UsersRepo {
     private val cache: MutableList<UserEntity> = mutableListOf()
 
@@ -35,8 +37,9 @@ class MockUsersRepo : UsersRepo {
     }
 
     private fun fillRepoByTestValues() {
-        for (i in 1..10) {
-            createUser(UserEntity("", "User-$i", "https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"))
+        createUser(UserEntity("", "Rogoz208", RANDOM_USER_PICTURE_URL))
+        for (i in 2..20) {
+            createUser(UserEntity("", "User-$i", RANDOM_USER_PICTURE_URL))
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.rogoz208.mygithubclient.R
 import com.rogoz208.mygithubclient.data.app
 import com.rogoz208.mygithubclient.databinding.ActivityRepositoriesBinding
@@ -62,7 +63,24 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
     }
 
     private fun initViewModel() {
+        viewModel.profileUserNameLiveData.observe(this) { userName ->
+            binding.profileNameTextView.text = userName
+        }
 
+        viewModel.profilePictureUrlLiveData.observe(this) { profilePictureUrl ->
+            Glide.with(this).load(profilePictureUrl).into(binding.profilePictureImageView)
+        }
+
+        viewModel.repositoriesListLiveData.observe(this) { repositories: List<RepositoryEntity> ->
+            fillRecyclerView(repositories)
+        }
+
+        viewModel.getUserData(
+            intent.getParcelableExtra(USER_EXTRA_KEY)
+                ?: throw IllegalStateException("User must not be null")
+        )
+
+        viewModel.getRepositoriesData()
     }
 
     private fun fillRecyclerView(repositories: List<RepositoryEntity>) {
