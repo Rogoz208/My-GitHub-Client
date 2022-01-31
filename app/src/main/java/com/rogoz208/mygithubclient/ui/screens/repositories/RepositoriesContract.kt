@@ -10,8 +10,8 @@ interface RepositoriesContract {
         val profileUserNameLiveData: LiveData<String>
         val profilePictureUrlLiveData: LiveData<String>
         val repositoriesListLiveData: LiveData<List<RepositoryEntity>>
+        val errorMessageLiveData: LiveData<String>
 
-        fun getUserData(user: UserEntity)
-        fun getRepositoriesData()
+        fun getData(user: UserEntity)
     }
 }

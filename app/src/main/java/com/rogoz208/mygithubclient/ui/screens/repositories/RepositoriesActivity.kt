@@ -75,12 +75,14 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
             fillRecyclerView(repositories)
         }
 
-        viewModel.getUserData(
+        viewModel.errorMessageLiveData.observe(this){ errorMessage: String ->
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.getData(
             intent.getParcelableExtra(USER_EXTRA_KEY)
                 ?: throw IllegalStateException("User must not be null")
         )
-
-        viewModel.getRepositoriesData()
     }
 
     private fun fillRecyclerView(repositories: List<RepositoryEntity>) {
