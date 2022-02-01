@@ -10,6 +10,7 @@ interface RepositoriesContract {
         val profileUserNameLiveData: LiveData<String>
         val profilePictureUrlLiveData: LiveData<String>
         val repositoriesListLiveData: LiveData<List<RepositoryEntity>>
+        val progressLiveData: LiveData<Boolean>
         val errorMessageLiveData: LiveData<String>
 
         fun getData(user: UserEntity)

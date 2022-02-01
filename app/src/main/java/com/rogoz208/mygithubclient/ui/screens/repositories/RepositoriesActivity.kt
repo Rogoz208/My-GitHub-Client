@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -63,11 +64,11 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
     }
 
     private fun initViewModel() {
-        viewModel.profileUserNameLiveData.observe(this) { userName ->
+        viewModel.profileUserNameLiveData.observe(this) { userName: String ->
             binding.profileNameTextView.text = userName
         }
 
-        viewModel.profilePictureUrlLiveData.observe(this) { profilePictureUrl ->
+        viewModel.profilePictureUrlLiveData.observe(this) { profilePictureUrl: String ->
             Glide.with(this).load(profilePictureUrl).into(binding.profilePictureImageView)
         }
 
@@ -75,7 +76,11 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
             fillRecyclerView(repositories)
         }
 
-        viewModel.errorMessageLiveData.observe(this){ errorMessage: String ->
+        viewModel.progressLiveData.observe(this) { progress: Boolean ->
+            binding.progressBar.isVisible = progress
+        }
+
+        viewModel.errorMessageLiveData.observe(this) { errorMessage: String ->
             Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
         }
 
