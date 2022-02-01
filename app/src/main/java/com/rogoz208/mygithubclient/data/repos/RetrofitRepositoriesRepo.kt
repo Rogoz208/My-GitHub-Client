@@ -6,19 +6,8 @@ import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://api.github.com/"
-
-class RetrofitRepositoriesRepo : RepositoriesRepo {
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private var api: GithubApi = retrofit.create(GithubApi::class.java)
+class RetrofitRepositoriesRepo(private val api: GithubApi) : RepositoriesRepo {
 
     override fun getRepositories(
         userName: String,
