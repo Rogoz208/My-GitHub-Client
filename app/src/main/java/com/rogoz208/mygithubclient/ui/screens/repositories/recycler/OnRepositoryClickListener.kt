@@ -5,7 +5,7 @@ import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 
 interface OnRepositoryClickListener {
 
-    fun onItemClick(item: RepositoryEntity, position: Int)
+    fun onRepositoryClick(item: RepositoryEntity, position: Int)
 
-    fun onItemLongClick(item: RepositoryEntity, itemView: View, position: Int)
+    fun onRepositoryLongClick(item: RepositoryEntity, itemView: View, position: Int)
 }

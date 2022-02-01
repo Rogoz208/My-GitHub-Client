@@ -22,11 +22,11 @@ class RepositoryViewHolder(
         binding.repositoryNameTextView.text = repository.repositoryName
 
         itemView.setOnClickListener {
-            clickListener.onItemClick(repository, this.layoutPosition)
+            clickListener.onRepositoryClick(repository, this.layoutPosition)
         }
 
         itemView.setOnLongClickListener {
-            clickListener.onItemLongClick(repository, itemView, this.layoutPosition)
+            clickListener.onRepositoryLongClick(repository, itemView, this.layoutPosition)
             true
         }
     }

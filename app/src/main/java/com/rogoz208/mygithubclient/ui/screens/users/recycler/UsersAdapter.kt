@@ -22,7 +22,7 @@ class UsersAdapter : RecyclerView.Adapter<UserViewHolder>() {
         return data.size
     }
 
-    fun getItem(position: Int): UserEntity {
+    private fun getItem(position: Int): UserEntity {
         return data[position]
     }
 

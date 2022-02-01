@@ -18,11 +18,11 @@ class UserViewHolder(parent: ViewGroup, private val clickListener: OnUserClickLi
         binding.userNameTextView.text = user.userName
 
         itemView.setOnClickListener {
-            clickListener.onItemClick(user, this.layoutPosition)
+            clickListener.onUserClick(user, this.layoutPosition)
         }
 
         itemView.setOnLongClickListener {
-            clickListener.onItemLongClick(user, itemView, this.layoutPosition)
+            clickListener.onUserLongClick(user, itemView, this.layoutPosition)
             true
         }
     }

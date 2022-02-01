@@ -1,10 +1,10 @@
 package com.rogoz208.mygithubclient.ui.screens.repositories
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +40,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
 
     private fun initRecyclerView() {
         val onItemClickListener = object : OnRepositoryClickListener {
-            override fun onItemClick(item: RepositoryEntity, position: Int) {
+            override fun onRepositoryClick(item: RepositoryEntity, position: Int) {
                 Toast.makeText(
                     this@UserRepositoriesActivity,
                     "${item.repositoryName} is clicked",
@@ -48,7 +48,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
                 ).show()
             }
 
-            override fun onItemLongClick(item: RepositoryEntity, itemView: View, position: Int) {
+            override fun onRepositoryLongClick(item: RepositoryEntity, itemView: View, position: Int) {
                 Toast.makeText(
                     this@UserRepositoriesActivity,
                     "${item.repositoryName} long clicked",

@@ -1,17 +1,17 @@
 package com.rogoz208.mygithubclient.ui.screens.users
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.mygithubclient.R
 import com.rogoz208.mygithubclient.data.app
-import com.rogoz208.mygithubclient.databinding.*
+import com.rogoz208.mygithubclient.databinding.ActivityUsersBinding
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.ui.screens.repositories.USER_EXTRA_KEY
 import com.rogoz208.mygithubclient.ui.screens.repositories.UserRepositoriesActivity
@@ -37,11 +37,11 @@ class UsersActivity : AppCompatActivity(R.layout.activity_users) {
 
     private fun initRecyclerView() {
         val onItemClickListener = object : OnUserClickListener {
-            override fun onItemClick(item: UserEntity, position: Int) {
+            override fun onUserClick(item: UserEntity, position: Int) {
                 viewModel.onUserClick(item)
             }
 
-            override fun onItemLongClick(item: UserEntity, itemView: View, position: Int) {
+            override fun onUserLongClick(item: UserEntity, itemView: View, position: Int) {
                 Toast.makeText(
                     this@UsersActivity,
                     "${item.userName} is long clicked",

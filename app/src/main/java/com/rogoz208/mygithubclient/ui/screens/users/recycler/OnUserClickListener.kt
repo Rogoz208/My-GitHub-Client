@@ -5,7 +5,7 @@ import com.rogoz208.mygithubclient.domain.entities.UserEntity
 
 interface OnUserClickListener {
 
-    fun onItemClick(item: UserEntity, position: Int)
+    fun onUserClick(item: UserEntity, position: Int)
 
-    fun onItemLongClick(item: UserEntity, itemView: View, position: Int)
+    fun onUserLongClick(item: UserEntity, itemView: View, position: Int)
 }

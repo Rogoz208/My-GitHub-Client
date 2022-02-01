@@ -23,7 +23,7 @@ class RepositoriesAdapter : RecyclerView.Adapter<RepositoryViewHolder>() {
         return data.size
     }
 
-    fun getItem(position: Int): RepositoryEntity {
+    private fun getItem(position: Int): RepositoryEntity {
         return data[position]
     }
 
