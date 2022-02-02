@@ -7,9 +7,7 @@ import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.kotlin.subscribeBy
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class RepositoriesViewModel(private val repositoriesRepo: RepositoriesRepo) : ViewModel(),
     RepositoriesContract.ViewModel {
