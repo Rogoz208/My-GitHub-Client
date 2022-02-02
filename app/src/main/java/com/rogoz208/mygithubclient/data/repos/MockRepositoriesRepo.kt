@@ -2,6 +2,7 @@ package com.rogoz208.mygithubclient.data.repos
 
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
+import io.reactivex.rxjava3.core.Observable
 
 class MockRepositoriesRepo : RepositoriesRepo {
     private val cache: MutableList<RepositoryEntity> = mutableListOf()
@@ -18,6 +19,9 @@ class MockRepositoriesRepo : RepositoriesRepo {
         onSuccess(ArrayList<RepositoryEntity>(cache))
     }
 
+    override fun getRepositoriesObservable(userName: String): Observable<List<RepositoryEntity>> {
+        return Observable.empty() // todo
+    }
 
     private fun fillRepoByTestValues() {
         for (i in 1..10) {

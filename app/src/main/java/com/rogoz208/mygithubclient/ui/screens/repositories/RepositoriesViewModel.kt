@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.subscribeBy
 
 class RepositoriesViewModel(private val repositoriesRepo: RepositoriesRepo) : ViewModel(),
     RepositoriesContract.ViewModel {
@@ -25,16 +27,16 @@ class RepositoriesViewModel(private val repositoriesRepo: RepositoriesRepo) : Vi
         profileUserNameLiveData.mutable().postValue(user.userName)
         profilePictureUrlLiveData.mutable().postValue(user.profilePictureUrl)
 
-        repositoriesRepo.getRepositories(
-            user.userName,
-            onSuccess = { repositories: List<RepositoryEntity> ->
-                progressLiveData.mutable().postValue(false)
-                repositoriesListLiveData.mutable().postValue(repositories)
-            },
-            onError = { t: Throwable ->
-                progressLiveData.mutable().postValue(false)
-                errorMessageLiveData.mutable().postValue(t.message)
-            }
-        )
+        repositoriesRepo.getRepositoriesObservable(user.userName)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = { repositories: List<RepositoryEntity> ->
+                    progressLiveData.mutable().postValue(false)
+                    repositoriesListLiveData.mutable().postValue(repositories)
+                },
+                onError = { t: Throwable ->
+                    progressLiveData.mutable().postValue(false)
+                    errorMessageLiveData.mutable().postValue(t.message)
+                })
     }
 }
