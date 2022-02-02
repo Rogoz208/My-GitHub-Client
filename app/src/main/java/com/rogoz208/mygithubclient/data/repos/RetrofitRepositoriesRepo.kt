@@ -9,7 +9,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RetrofitRepositoriesRepo(private val githubApi: GithubApi, private val githubRxApi: GithubRxApi) : RepositoriesRepo {
+class RetrofitRepositoriesRepo(
+    private val githubApi: GithubApi,
+    private val githubRxApi: GithubRxApi
+) : RepositoriesRepo {
 
     override fun getRepositories(
         userName: String,
