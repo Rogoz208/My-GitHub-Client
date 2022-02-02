@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:focusable="true">
+    android:clickable="true">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="8dp">
+        android:layout_marginVertical="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +26,7 @@
                 android:singleLine="true"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:text="Rogoz208" />
+                tools:text="User-1" />
 
         </LinearLayout>
 

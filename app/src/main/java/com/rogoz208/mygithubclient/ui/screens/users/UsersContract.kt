@@ -5,8 +5,9 @@ import com.rogoz208.mygithubclient.domain.entities.UserEntity
 
 interface UsersContract {
 
-    interface ViewModel{
+    interface ViewModel {
         val usersListLiveData: LiveData<List<UserEntity>>
+        val openRepositoriesScreenLiveData: LiveData<UserEntity>
 
         fun getData()
         fun onUserClick(userEntity: UserEntity)

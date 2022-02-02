@@ -8,7 +8,7 @@ class UsersAdapter : RecyclerView.Adapter<UserViewHolder>() {
     var data: List<UserEntity> = ArrayList()
         get() = ArrayList(field)
 
-    private var clickListener: OnItemClickListener? = null
+    private var clickListener: OnUserClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(parent, clickListener!!)
@@ -22,11 +22,11 @@ class UsersAdapter : RecyclerView.Adapter<UserViewHolder>() {
         return data.size
     }
 
-    fun getItem(position: Int): UserEntity {
+    private fun getItem(position: Int): UserEntity {
         return data[position]
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    fun setOnItemClickListener(listener: OnUserClickListener) {
         clickListener = listener
     }
 }

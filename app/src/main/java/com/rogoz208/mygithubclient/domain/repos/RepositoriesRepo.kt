@@ -4,11 +4,9 @@ import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 
 interface RepositoriesRepo {
 
-    fun getRepositories(callback: (List<RepositoryEntity>) -> Unit)
-
-    fun createRepository(repository: RepositoryEntity)
-
-    fun deleteRepository(uId: String)
-
-    fun updateRepository(uId: String, repository: RepositoryEntity, position: Int)
+    fun getRepositories(
+        userName: String,
+        onSuccess: (List<RepositoryEntity>) -> Unit,
+        onError: (Throwable) -> Unit
+    )
 }

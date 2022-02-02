@@ -7,13 +7,13 @@
     tools:context=".ui.screens.users.UsersActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/users_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/user_card_view_holder" />
+        tools:listitem="@layout/view_holder_user_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
