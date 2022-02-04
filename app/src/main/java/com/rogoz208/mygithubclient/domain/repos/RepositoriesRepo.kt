@@ -1,7 +1,7 @@
 package com.rogoz208.mygithubclient.domain.repos
 
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Observable
 
 interface RepositoriesRepo {
 
@@ -11,5 +11,5 @@ interface RepositoriesRepo {
         onError: (Throwable) -> Unit
     )
 
-    fun getRepositoriesObservable(userName: String): Single<List<RepositoryEntity>>
+    fun getRepositoriesObservable(userName: String): Observable<List<RepositoryEntity>>
 }
