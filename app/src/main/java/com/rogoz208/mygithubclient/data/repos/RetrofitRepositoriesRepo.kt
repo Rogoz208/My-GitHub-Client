@@ -4,7 +4,7 @@ import com.rogoz208.mygithubclient.data.retrofit.GithubApi
 import com.rogoz208.mygithubclient.data.retrofit.GithubRxApi
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +33,7 @@ class RetrofitRepositoriesRepo(
         })
     }
 
-    override fun getRepositoriesObservable(userName: String): Single<List<RepositoryEntity>> {
-        return githubRxApi.getReposByUser(userName)
+    override fun getRepositoriesObservable(userName: String): Observable<List<RepositoryEntity>> {
+        return githubRxApi.getReposByUser(userName).distinct()
     }
 }

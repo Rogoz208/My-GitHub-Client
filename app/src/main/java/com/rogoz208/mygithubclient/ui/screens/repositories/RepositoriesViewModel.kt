@@ -33,7 +33,7 @@ class RepositoriesViewModel(private val repositoriesRepo: RepositoriesRepo) : Vi
         repositoriesDisposable = repositoriesRepo.getRepositoriesObservable(user.userName)
             .observeOn(Schedulers.computation())
             .subscribeBy(
-                onSuccess = { repositories: List<RepositoryEntity> ->
+                onNext = { repositories: List<RepositoryEntity> ->
                     progressLiveData.mutable().postValue(false)
                     repositoriesListLiveData.mutable().postValue(repositories)
                 },
