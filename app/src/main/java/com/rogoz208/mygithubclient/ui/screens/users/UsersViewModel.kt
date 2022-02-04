@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.domain.repos.UsersRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 
 class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContract.ViewModel {
@@ -15,12 +16,14 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
         return this as MutableLiveData<T>
     }
 
+    private var usersDisposable: Disposable? = null
+
     override val usersListLiveData: LiveData<List<UserEntity>> = MutableLiveData()
     override val openRepositoriesScreenLiveData: LiveData<UserEntity> = MutableLiveData()
 
 
     override fun getData() {
-        usersRepo.usersObservable
+        usersDisposable = usersRepo.usersObservable
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = { users: List<UserEntity> ->
@@ -34,5 +37,10 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
 
     override fun onUserClick(userEntity: UserEntity) {
         openRepositoriesScreenLiveData.mutable().postValue(userEntity)
+    }
+
+    override fun onCleared() {
+        usersDisposable?.dispose()
+        super.onCleared()
     }
 }
