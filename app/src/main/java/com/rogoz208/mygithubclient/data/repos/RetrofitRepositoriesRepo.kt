@@ -1,5 +1,6 @@
 package com.rogoz208.mygithubclient.data.repos
 
+import android.util.Log
 import com.rogoz208.mygithubclient.data.retrofit.GithubApi
 import com.rogoz208.mygithubclient.data.retrofit.GithubRxApi
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
@@ -34,6 +35,20 @@ class RetrofitRepositoriesRepo(
     }
 
     override fun getRepositoriesObservable(userName: String): Observable<List<RepositoryEntity>> {
-        return githubRxApi.getReposByUser(userName).distinct()
+        return Observable.create { emitter ->
+            githubApi.getReposByUser(userName).enqueue(object : Callback<List<RepositoryEntity>> {
+                override fun onResponse(
+                    call: Call<List<RepositoryEntity>>,
+                    response: Response<List<RepositoryEntity>>
+                ) {
+                    emitter.onNext(response.body() ?: emptyList())
+                }
+
+                override fun onFailure(call: Call<List<RepositoryEntity>>, t: Throwable) {
+                    Log.d("@@@", t.message.orEmpty())
+                    emitter.onComplete()
+                }
+            })
+        }
     }
 }
