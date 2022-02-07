@@ -24,9 +24,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
 
     private val binding by viewBinding(ActivityRepositoriesBinding::bind)
     private val viewModel: RepositoriesContract.ViewModel by viewModels {
-        RepositoriesViewModelFactory(
-            app.repositoriesRepo
-        )
+        RepositoriesViewModelFactory(app.repositoriesRepo)
     }
 
     private val adapter by lazy { RepositoriesAdapter() }
