@@ -60,8 +60,13 @@ class UsersActivity : AppCompatActivity(R.layout.activity_users) {
         viewModel.usersListLiveData.observe(this) { users: List<UserEntity> ->
             fillRecyclerView(users)
         }
+
         viewModel.openRepositoriesScreenLiveData.observe(this) { user: UserEntity ->
             openUserRepositoriesScreen(user)
+        }
+
+        viewModel.errorMessageLiveData.observe(this) { errorMsg ->
+            Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show()
         }
 
         viewModel.getData()

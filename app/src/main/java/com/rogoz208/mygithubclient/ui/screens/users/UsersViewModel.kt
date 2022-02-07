@@ -1,6 +1,5 @@
 package com.rogoz208.mygithubclient.ui.screens.users
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,6 +19,7 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
 
     override val usersListLiveData: LiveData<List<UserEntity>> = MutableLiveData()
     override val openRepositoriesScreenLiveData: LiveData<UserEntity> = MutableLiveData()
+    override val errorMessageLiveData: LiveData<String> = MutableLiveData()
 
 
     override fun getData() {
@@ -30,7 +30,7 @@ class UsersViewModel(private val usersRepo: UsersRepo) : ViewModel(), UsersContr
                     usersListLiveData.mutable().postValue(users)
                 },
                 onError = { t: Throwable ->
-                    Log.d("@@@", t.message.orEmpty())
+                    errorMessageLiveData.mutable().postValue(t.message)
                 }
             )
     }
