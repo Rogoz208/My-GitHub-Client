@@ -9,10 +9,11 @@ import com.rogoz208.mygithubclient.data.retrofit.GithubRetrofit
 import com.rogoz208.mygithubclient.data.retrofit.GithubRxApi
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
 import com.rogoz208.mygithubclient.domain.repos.UsersRepo
+import retrofit2.Retrofit
 
 class App : Application() {
 
-    private val githubRetrofit = GithubRetrofit().retrofit
+    private val githubRetrofit: Retrofit = GithubRetrofit().retrofit
 
     private val githubApi: GithubApi = githubRetrofit.create(GithubApi::class.java)
     private val githubRxApi: GithubRxApi = githubRetrofit.create(GithubRxApi::class.java)
