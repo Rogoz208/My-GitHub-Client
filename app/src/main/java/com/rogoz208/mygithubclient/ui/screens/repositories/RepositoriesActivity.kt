@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.rogoz208.mygithubclient.R
-import com.rogoz208.mygithubclient.data.app
+import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityRepositoriesBinding
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.OnRepositoryClickListener

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.mygithubclient.R
-import com.rogoz208.mygithubclient.data.app
+import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityUsersBinding
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.ui.screens.repositories.USER_EXTRA_KEY
