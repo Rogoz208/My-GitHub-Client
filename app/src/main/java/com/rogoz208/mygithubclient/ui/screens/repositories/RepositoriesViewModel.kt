@@ -30,10 +30,10 @@ class RepositoriesViewModel(private val repositoriesRepo: RepositoriesRepo) : Vi
         profileUserNameLiveData.mutable().postValue(user.userName)
         profilePictureUrlLiveData.mutable().postValue(user.profilePictureUrl)
 
-        repositoriesDisposable = repositoriesRepo.getRepositoriesObservable(user.userName)
+        repositoriesDisposable = repositoriesRepo.getRepositoriesSingle(user.userName)
             .observeOn(Schedulers.computation())
             .subscribeBy(
-                onNext = { repositories: List<RepositoryEntity> ->
+                onSuccess = { repositories: List<RepositoryEntity> ->
                     progressLiveData.mutable().postValue(false)
                     repositoriesListLiveData.mutable().postValue(repositories)
                 },
