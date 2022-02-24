@@ -13,13 +13,15 @@ import retrofit2.Retrofit
 
 class App : Application() {
 
-    private val githubRetrofit: Retrofit = GithubRetrofit().retrofit
+    private val githubRetrofit: Retrofit by lazy { GithubRetrofit().retrofit }
 
-    private val githubApi: GithubApi = githubRetrofit.create(GithubApi::class.java)
-    private val githubRxApi: GithubRxApi = githubRetrofit.create(GithubRxApi::class.java)
+    private val githubApi: GithubApi by lazy { githubRetrofit.create(GithubApi::class.java) }
+    private val githubRxApi: GithubRxApi by lazy { githubRetrofit.create(GithubRxApi::class.java) }
 
     val usersRepo: UsersRepo by lazy { MockUsersRepo() }
-    val repositoriesRepo: RepositoriesRepo by lazy { RetrofitRepositoriesRepo(githubApi, githubRxApi) }
+    val repositoriesRepo: RepositoriesRepo by lazy {
+        RetrofitRepositoriesRepo(githubApi, githubRxApi)
+    }
 }
 
 val Context.app: App

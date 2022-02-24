@@ -13,8 +13,8 @@ import com.rogoz208.mygithubclient.R
 import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityUsersBinding
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
+import com.rogoz208.mygithubclient.ui.screens.repositories.RepositoriesActivity
 import com.rogoz208.mygithubclient.ui.screens.repositories.USER_EXTRA_KEY
-import com.rogoz208.mygithubclient.ui.screens.repositories.UserRepositoriesActivity
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.OnUserClickListener
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.UsersAdapter
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.UsersDiffCallback
@@ -80,7 +80,7 @@ class UsersActivity : AppCompatActivity(R.layout.activity_users) {
     }
 
     private fun openUserRepositoriesScreen(user: UserEntity) {
-        val intent = Intent(this, UserRepositoriesActivity::class.java)
+        val intent = Intent(this, RepositoriesActivity::class.java)
         intent.putExtra(USER_EXTRA_KEY, user)
         startActivity(intent)
     }

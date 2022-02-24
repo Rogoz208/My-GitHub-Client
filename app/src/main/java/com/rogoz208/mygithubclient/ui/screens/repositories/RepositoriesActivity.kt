@@ -20,7 +20,7 @@ import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.Repositories
 
 const val USER_EXTRA_KEY = "USER_EXTRA_KEY"
 
-class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
+class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
 
     private val binding by viewBinding(ActivityRepositoriesBinding::bind)
     private val viewModel: RepositoriesContract.ViewModel by viewModels {
@@ -40,7 +40,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
         val onItemClickListener = object : OnRepositoryClickListener {
             override fun onRepositoryClick(item: RepositoryEntity, position: Int) {
                 Toast.makeText(
-                    this@UserRepositoriesActivity,
+                    this@RepositoriesActivity,
                     "${item.repositoryName} is clicked",
                     Toast.LENGTH_LONG
                 ).show()
@@ -48,7 +48,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
 
             override fun onRepositoryLongClick(item: RepositoryEntity, itemView: View, position: Int) {
                 Toast.makeText(
-                    this@UserRepositoriesActivity,
+                    this@RepositoriesActivity,
                     "${item.repositoryName} long clicked",
                     Toast.LENGTH_LONG
                 ).show()

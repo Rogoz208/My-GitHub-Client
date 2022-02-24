@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGitHubClient">
         <activity
-            android:name=".ui.screens.repositories.UserRepositoriesActivity"
+            android:name=".ui.screens.repositories.RepositoriesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.screens.users.UsersActivity"
