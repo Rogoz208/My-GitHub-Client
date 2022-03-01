@@ -6,8 +6,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [MyModule::class])
-interface MyComponent {
+@Component(modules = [ReposModule::class, RetrofitModule::class])
+interface AppComponent {
 
     fun inject(usersActivity: UsersActivity)
     fun inject(repositoriesActivity: RepositoriesActivity)
