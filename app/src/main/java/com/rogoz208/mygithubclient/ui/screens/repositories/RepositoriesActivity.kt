@@ -11,20 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.rogoz208.mygithubclient.R
-import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityRepositoriesBinding
+import com.rogoz208.mygithubclient.di.get
+import com.rogoz208.mygithubclient.di.inject
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
+import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.OnRepositoryClickListener
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.RepositoriesAdapter
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.RepositoriesDiffCallback
 
 const val USER_EXTRA_KEY = "USER_EXTRA_KEY"
 
-class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
+class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
 
     private val binding by viewBinding(ActivityRepositoriesBinding::bind)
     private val viewModel: RepositoriesContract.ViewModel by viewModels {
-        RepositoriesViewModelFactory(app.repositoriesRepo)
+        RepositoriesViewModelFactory(get())
     }
 
     private val adapter by lazy { RepositoriesAdapter() }
@@ -40,7 +42,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
         val onItemClickListener = object : OnRepositoryClickListener {
             override fun onRepositoryClick(item: RepositoryEntity, position: Int) {
                 Toast.makeText(
-                    this@UserRepositoriesActivity,
+                    this@RepositoriesActivity,
                     "${item.repositoryName} is clicked",
                     Toast.LENGTH_LONG
                 ).show()
@@ -48,7 +50,7 @@ class UserRepositoriesActivity : AppCompatActivity(R.layout.activity_repositorie
 
             override fun onRepositoryLongClick(item: RepositoryEntity, itemView: View, position: Int) {
                 Toast.makeText(
-                    this@UserRepositoriesActivity,
+                    this@RepositoriesActivity,
                     "${item.repositoryName} long clicked",
                     Toast.LENGTH_LONG
                 ).show()
