@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.rogoz208.mygithubclient.R
+import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityRepositoriesBinding
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
@@ -26,8 +27,7 @@ class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
     private val binding by viewBinding(ActivityRepositoriesBinding::bind)
 
     @Inject
-    private lateinit var repositoriesRepo: RepositoriesRepo
-
+    lateinit var repositoriesRepo: RepositoriesRepo
     private val viewModel: RepositoriesContract.ViewModel by viewModels {
         RepositoriesViewModelFactory(repositoriesRepo)
     }
@@ -36,6 +36,8 @@ class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        app.di.inject(this)
 
         initRecyclerView()
         initViewModel()
@@ -51,7 +53,11 @@ class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
                 ).show()
             }
 
-            override fun onRepositoryLongClick(item: RepositoryEntity, itemView: View, position: Int) {
+            override fun onRepositoryLongClick(
+                item: RepositoryEntity,
+                itemView: View,
+                position: Int
+            ) {
                 Toast.makeText(
                     this@RepositoriesActivity,
                     "${item.repositoryName} long clicked",
