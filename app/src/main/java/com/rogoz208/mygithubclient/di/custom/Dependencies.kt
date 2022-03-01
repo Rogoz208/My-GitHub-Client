@@ -1,4 +1,4 @@
-package com.rogoz208.mygithubclient.di
+package com.rogoz208.mygithubclient.di.custom
 
 import com.rogoz208.mygithubclient.data.repos.MockUsersRepo
 import com.rogoz208.mygithubclient.data.repos.RetrofitRepositoriesRepo

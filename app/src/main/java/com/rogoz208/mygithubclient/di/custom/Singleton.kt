@@ -1,4 +1,4 @@
-package com.rogoz208.mygithubclient.di
+package com.rogoz208.mygithubclient.di.custom
 
 class Singleton<T>(val create: () -> T) : DependencyFactory<T> {
     private var dependency: T? = null

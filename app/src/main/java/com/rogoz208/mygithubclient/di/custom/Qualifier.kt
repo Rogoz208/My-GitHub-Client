@@ -1,4 +1,4 @@
-package com.rogoz208.mygithubclient.di
+package com.rogoz208.mygithubclient.di.custom
 
 import kotlin.reflect.KClass
 
