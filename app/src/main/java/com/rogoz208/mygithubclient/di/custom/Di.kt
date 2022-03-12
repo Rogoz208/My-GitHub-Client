@@ -1,4 +1,4 @@
-package com.rogoz208.mygithubclient.di
+package com.rogoz208.mygithubclient.di.custom
 
 object Di {
     private val dependenciesMap: HashMap<Qualifier, DependencyFactory<*>> = HashMap()

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.rogoz208.mygithubclient.R
+import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityUsersBinding
-import com.rogoz208.mygithubclient.di.get
 import com.rogoz208.mygithubclient.domain.entities.UserEntity
 import com.rogoz208.mygithubclient.domain.repos.UsersRepo
 import com.rogoz208.mygithubclient.ui.screens.repositories.RepositoriesActivity
@@ -19,18 +19,24 @@ import com.rogoz208.mygithubclient.ui.screens.repositories.USER_EXTRA_KEY
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.OnUserClickListener
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.UsersAdapter
 import com.rogoz208.mygithubclient.ui.screens.users.recycler.UsersDiffCallback
+import javax.inject.Inject
 
 class UsersActivity : AppCompatActivity(R.layout.activity_users) {
 
     private val binding by viewBinding(ActivityUsersBinding::bind)
+
+    @Inject
+    lateinit var usersRepo: UsersRepo
     private val viewModel: UsersContract.ViewModel by viewModels {
-        UsersViewModelFactory(get())
+        UsersViewModelFactory(usersRepo)
     }
 
     private val adapter by lazy { UsersAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        app.di.inject(this)
 
         initRecyclerView()
         initViewModel()
