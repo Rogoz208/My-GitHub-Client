@@ -11,14 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.rogoz208.mygithubclient.R
-import com.rogoz208.mygithubclient.app
 import com.rogoz208.mygithubclient.databinding.ActivityRepositoriesBinding
 import com.rogoz208.mygithubclient.domain.entities.RepositoryEntity
 import com.rogoz208.mygithubclient.domain.repos.RepositoriesRepo
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.OnRepositoryClickListener
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.RepositoriesAdapter
 import com.rogoz208.mygithubclient.ui.screens.repositories.recycler.RepositoriesDiffCallback
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 const val USER_EXTRA_KEY = "USER_EXTRA_KEY"
 
@@ -26,8 +25,7 @@ class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
 
     private val binding by viewBinding(ActivityRepositoriesBinding::bind)
 
-    @Inject
-    lateinit var repositoriesRepo: RepositoriesRepo
+    private val repositoriesRepo: RepositoriesRepo by inject()
     private val viewModel: RepositoriesContract.ViewModel by viewModels {
         RepositoriesViewModelFactory(repositoriesRepo)
     }
@@ -36,8 +34,6 @@ class RepositoriesActivity : AppCompatActivity(R.layout.activity_repositories) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        app.di.inject(this)
 
         initRecyclerView()
         initViewModel()
