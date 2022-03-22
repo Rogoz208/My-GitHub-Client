@@ -2,12 +2,21 @@ package com.rogoz208.mygithubclient
 
 import android.app.Application
 import android.content.Context
-import com.rogoz208.mygithubclient.di.dagger.AppComponent
-import com.rogoz208.mygithubclient.di.dagger.DaggerAppComponent
+import com.rogoz208.mygithubclient.di.koin.reposModule
+import com.rogoz208.mygithubclient.di.koin.retrofitModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class App : Application() {
-    val di: AppComponent by lazy { DaggerAppComponent.builder().build() }
-}
+    override fun onCreate() {
+        super.onCreate()
 
-val Context.app: App
-    get() = applicationContext as App
+        startKoin {
+            androidLogger(Level.ERROR)
+            androidContext(this@App)
+            modules(reposModule, retrofitModule)
+        }
+    }
+}
